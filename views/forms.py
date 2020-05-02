@@ -58,7 +58,7 @@ class Form(FlaskForm):
     region = SelectField('region', choices=[('1', 'Select a region')], validators=[DataRequired()])
     municipality = SelectField('municipality', choices=[('1', 'Select a municipality')], validators=[DataRequired()])
     emplacement = SelectField('emplacement', choices=[('1', 'Select an emplacement')], validators=[DataRequired()])
-    area = DecimalField('area',
+    area = IntegerField('area',
                         validators=[DataRequired()])
     roomNumber = SelectField('roomNumber', choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6')],
                            validators=[DataRequired()])
