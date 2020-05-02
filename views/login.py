@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, url_for, flash, redirect, request
+from flask import render_template, Blueprint, request, url_for, flash, redirect, request, session
 from models import Users
 from models import db, bcrypt
 from views.forms import RegistrationForm, LoginForm
@@ -42,10 +42,12 @@ def login():
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
+
         user = Users.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
+            session['logged_in'] = True
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
@@ -55,5 +57,7 @@ def login():
 @auth.route("/logout")
 def logout():
     logout_user()
+    session['logged_in'] = False
+
     return redirect(url_for('home'))
 

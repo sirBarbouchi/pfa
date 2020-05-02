@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
+import joblib
 
 # Importing the dataset
 dataset = pd.read_csv('house_data.csv')
@@ -50,3 +51,5 @@ pickle.dump(ridge_reg, open('model.pkl','wb'))
 
 # Loading model to compare the results
 model = pickle.load(open('model.pkl','rb'))
+joblib.dump(sc_X, "data_transformer.joblib")
+#ridge_reg.save("price_prediction_model.h5")

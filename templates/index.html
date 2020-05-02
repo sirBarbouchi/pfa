@@ -23,7 +23,7 @@
             Add comment here !!!!!!!!
           </p>
           <div>
-            <a href="predict.html" class="slider-link">
+            <a href="{{ url_for('pred.predict') }}" class="slider-link">
               PREDICT
             </a>
           </div>
@@ -51,78 +51,12 @@
     <!-- end slider section -->
   </div>
 <!-- about section -->
-<section class="about_section layout_padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="detail-box">
-          <div class="custom_heading-container">
-            <h2>
-              ABOUT            
-            </h2>
-            <hr>
-          </div>
-          <p>
-            ADD ABOUT SECTION! ADD ABOUT SECTION! ADD ABOUT SECTION!
-            ADD ABOUT SECTION! ADD ABOUT SECTION! ADD ABOUT SECTION!
-            ADD ABOUT SECTION!ADD ABOUT SECTION!
-          </p>
-          
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="img-box">
-          <img src="static/images/about-img.png" alt="">
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 
 <!-- end about section -->
 <!-- contact section -->
 
-<section class="contact_section layout_padding-bottom">
-  <div class="container">
-    <div class="d-flex flex-column align-items-end">
-      <div class="custom_heading-container">
-        <hr>
-        <h2>
-          Contact Us
-        </h2>
-      </div>
-    </div>
-    <div class="layout_padding-top layout_padding2-bottom">
-      <div class="row">
-        <div class="col-md-7">
-          <form action="">
-            <div class="contact_form-container">
-              <div>
-                <div>
-                  <input type="text" placeholder="Name">
-                </div>
-                <div>
-                  <input type="email" placeholder="Email">
-                </div>
-                <div>
-                  <input type="text" placeholder="Phone Number">
-                </div>
-                <div class="">
-                  <input type="text" placeholder="Message" class="message_input">
-                </div>
-                <div class="mt-5">
-                  <button type="submit">
-                    send
-                  </button>
-                </div>
-              </div>
 
-            </div>
-
-          </form>
-        </div>
           
 
 {% endblock content %}

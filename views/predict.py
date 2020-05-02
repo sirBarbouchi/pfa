@@ -1,18 +1,22 @@
-from flask import Flask, render_template, request, jsonify, json, Blueprint
+from flask import Flask, render_template, request, jsonify, json, Blueprint, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy  
 from wtforms import SelectField
 from flask_wtf import FlaskForm
+from flask_login import current_user
 from views.forms import Form
 from models import Region, Municipality, Emplacement
 import numpy as np
 import pickle
 from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
 
+import joblib
 
 
 model=pickle.load(open('model.pkl','rb'))
 
- 
+
+sc_X = joblib.load("data_transformer.joblib") 
  
 pred = Blueprint('pred', __name__, template_folder='templates')
 def transf(l):
@@ -28,6 +32,8 @@ def transf(l):
          
 @pred.route('/predict', methods=['GET', 'POST'])
 def predict():
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
     form = Form()
     form.region.choices = [(region.id, region.name) for region in Region.query.all()]
   
@@ -35,14 +41,16 @@ def predict():
         emplacement = Emplacement.query.filter_by(id=form.emplacement.data).first()
         region = Region.query.filter_by(id=form.region.data).first()
         municipality = Municipality.query.filter_by(id=form.municipality.data).first()
-        area = form.area.data
-        roomNumber = form.area.data
+        area = int(form.area.data)
+        roomNumber = int(form.roomNumber.data)
         emp = emplacement.id
         int_features = [emp, roomNumber, area]
-        sc_X = StandardScaler()
         final = np.array(transf(int_features)).reshape(-1, 59)
-        print(final)
-        final[:,57:] = sc_X.fit_transform(final[:,57:]) 
+        print("**" , final)
+
+        final[:,57:] = sc_X.transform(final[:,57:]) 
+        print("**" , final)
+
         prediction = model.predict(final)
 
         return '<h1>prediction : {}</h1>'.format(round(prediction[0], 2))
