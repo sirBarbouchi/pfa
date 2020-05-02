@@ -35,8 +35,8 @@ def predict():
         emplacement = Emplacement.query.filter_by(id=form.emplacement.data).first()
         region = Region.query.filter_by(id=form.region.data).first()
         municipality = Municipality.query.filter_by(id=form.municipality.data).first()
-        area = form.area.data
-        roomNumber = form.area.data
+        area = int(form.area.data)
+        roomNumber = int(form.roomNumber.data)
         emp = emplacement.id
         int_features = [emp, roomNumber, area]
         sc_X = StandardScaler()
