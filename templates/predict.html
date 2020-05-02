@@ -15,45 +15,32 @@
           <div class="layout_padding-top layout_padding2-bottom">
             <div class="row">
               <div class="col-md-7">
-                <form action="*********">
-                  <div class="contact_form-container">
-                    <div>
-                      <div>
-                            <label for="location">Where is the estate located?</label>
-                            <select  id="location" class="form-control" name="location">
-                            <option selected>Tunis
-                            <option>Nabeul
-                            <option>Hammamet
-                            <option>Zaghouan
-                            <option>Sousse
-                            <option>Monastir
-                            <option>Ariana
-                            <option>Beja
-                            <option>Sfax
-                            <option>kairouan
-                            <option>Bizerte
-                            <option>Gabes
-                            <option>Gbelli
-                            <option>Kef
-                            <option>Siliana
-                            <option>Sidi Bouzid
-                            <option>medenine
-                             </select>
-                      </div><br>
-                      <div>
-                        <label for="nb_p">How many pieces?</label>
-              <select  id="number" class="form-control" name="nbrepiece">
-              <option selected>1
-              <option>1
-              <option>2
-              <option>3
-              <option>4
-              <option>5
-              <option>6
-              </select>
-                      </div>
+                <form method="POST">
+          {{ form.csrf_token}}  
+      <div class="form-group">
+    <label>Region:</label>
+    {{ form.region(class="form-control") }}
+   </div>
+   <div class="form-group">
+    <label>Municipality:</label>
+    {{ form.municipality(class="form-control")}}
+   </div>
+   <div class="form-group">
+    <label >Emplacement:</label>
+    {{ form.emplacement(class="form-control")}} 
+   </div>
+    <div class="form-group">
+    <label >Area:</label>
+    {{ form.area(class="form-control")}} 
+   </div>
+   <div class="form-group">
+    <label >How many pieces?</label>
+    {{ form.roomNumber(class="form-control")}} 
+   </div>
+   
+
                       <div class="mt-5">
-                        <button type="submit">
+                        <button type="submit" class="btn btn-success">
                           send
                         </button>
                       </div>
@@ -64,9 +51,45 @@
                 </form>
               </div>
                 
-            {% endblock content %}
 
       
       <!-- end contact section -->
-    </body>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>   
+<script>
+  alert("zeby")
+region_select = document.getElementById('region');
+municipality_select = document.getElementById('municipality');
+emplacement_select = document.getElementById('emplacement');
+ 
+region_select.onchange = function(){
+ region = region_select.value;
+ <!-- alert(region); --> 
+ fetch('municipality/' + region).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   for (municipality of data.municipalityregion) {
+    optionHTML += '<option value="' + municipality.id +'">' + municipality.name + '</option>'
+   }
+   municipality_select.innerHTML = optionHTML;
+  });
+ });
+}
+municipality_select.onchange = function(){
+ emplacement = municipality_select.value; 
+ fetch('emplacement/' + emplacement).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   for (emplacement_rs of data.emplacementlist) {
+    optionHTML += '<option value="' + emplacement_rs.id +'">' + emplacement_rs.name + '</option>'
+   }
+   emplacement_select.innerHTML = optionHTML;
+  });
+ });
+}
+</script>
+{% endblock content %}
+
+</body>
 </html>

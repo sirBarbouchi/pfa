@@ -23,3 +23,36 @@ class Users(UserMixin, db.Model):
         self.email = email
         self.username = username
         self.password = password
+
+class Ads(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    transactionType = db.Column(db.String(10))
+    roomsNum = db.Column(db.Integer)
+    area = db.Column(db.Integer)
+    governorate = db.Column(db.String(200))
+    location = db.Column(db.String(200))
+    price = db.Column(db.Float)
+    mobile = db.Column(db.Integer)
+    description = db.Column(db.Text)
+
+    def __init__(self, transactionType, roomsNum, area, governorate, location, price, mobile, description):
+        self.transactionType = transactionType
+        self.roomsNum = roomsNum
+        self.area = area
+        self.governorate = governorate
+        self.price = price
+        self.mobile = mobile        
+        self.description = description
+class Region(db.Model):  
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60))
+  
+class Municipality(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60))
+    region_id = db.Column(db.Integer)
+  
+class Emplacement(db.Model): 
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60))
+    municipality_id = db.Column(db.Integer) 
