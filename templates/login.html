@@ -9,11 +9,24 @@
                 Login
               </h2><hr>
             </div>
+            
           </div>
           <div class="layout_padding-top layout_padding2-bottom">
             <div class="row">
               <div class="col-md-7">
+                
+        
                 <form action="" method="POST">
+                  
+                {% with messages = get_flashed_messages(category_filter=["danger"]) %}
+                {% if messages %}
+                  {% for message in messages %}
+                  <div class="alert alert-danger" role="alert">
+                    <p>{{ message  }}</p>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
                   {{ form.hidden_tag() }}
                   <div class="contact_form-container">
                     <div>

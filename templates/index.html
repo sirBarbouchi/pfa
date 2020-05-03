@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
+<script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.js"></script>
     <section class=" slider_section position-relative">
 
       <div class="slider_bg-container">
@@ -55,9 +57,17 @@
 
 <!-- end about section -->
 <!-- contact section -->
-
-
-          
+<!--
+{% with messages = get_flashed_messages(category_filter=["success"]) %}
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success" role="alert">
+    <p>{{ message  }}</p>
+  </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+-->          
 
 {% endblock content %}
 
@@ -101,10 +111,10 @@
   <section class="container-fluid footer_section">
   
   </section>
+
   <!-- footer section -->
 
-  <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="static/js/bootstrap.js"></script>
+
 
 </body>
 

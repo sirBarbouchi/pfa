@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, json, Blueprint, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy  
-from wtforms import SelectField
+from wtforms import SelectField, Form
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from views.forms import Form
@@ -9,7 +9,6 @@ import numpy as np
 import pickle
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge
-
 import joblib
 
 
@@ -33,10 +32,13 @@ def transf(l):
 @pred.route('/predict', methods=['GET', 'POST'])
 def predict():
     if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
+        #print(request.path)
+        return redirect(url_for('auth.login', messages=request.path))
+
+        #return redirect(url_for('auth.login'))
     form = Form()
     form.region.choices = [(region.id, region.name) for region in Region.query.all()]
-  
+    form.region.default = '1'
     if request.method == 'POST':
         emplacement = Emplacement.query.filter_by(id=form.emplacement.data).first()
         region = Region.query.filter_by(id=form.region.data).first()
@@ -53,7 +55,7 @@ def predict():
 
         prediction = model.predict(final)
 
-        return '<h1>prediction : {}</h1>'.format(round(prediction[0], 2))
+        return render_template('price.html',price=round(prediction[0], 2))
     return render_template('predict.html', form=form)
  
 @pred.route('/municipality/<get_municipality>')###
@@ -77,3 +79,4 @@ def emplacement(get_emplacement):
         emplacementObj['name'] = emplacement.name
         emplacementArray.append(emplacementObj)
     return jsonify({'emplacementlist' : emplacementArray}) 
+

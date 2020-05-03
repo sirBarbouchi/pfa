@@ -46,12 +46,20 @@ def login():
         user = Users.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
+            next_page = request.args['messages'] 
+            #next_page = request.args.get("next")
+            print(next_page)
             session['logged_in'] = True
+            #flash('Login successful.', 'success')
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
+            return redirect(url_for('auth.redirected'))
     return render_template('login.html', title='Login', form=form)
+
+@auth.route("/redirected", methods=['GET', 'POST'])
+def redirected():
+    return redirect(url_for('auth.login'))
 
 
 @auth.route("/logout")
