@@ -32,7 +32,9 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('auth.login'))
+        #session['logged_in'] = True
+
+        return redirect(url_for('auth.login',messages=''))
     return render_template('registration.html', title='Register', form=form)
 
 
@@ -48,10 +50,16 @@ def login():
             login_user(user, remember=form.remember.data)
             next_page = request.args['messages'] 
             #next_page = request.args.get("next")
+            print("*************")
             print(next_page)
             session['logged_in'] = True
+            return redirect(next_page) if next_page=="/predict" else redirect(url_for('home'))
+
             #flash('Login successful.', 'success')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            #if next_page=="/predict":
+            #    return redirect(next_page) 
+            #else:               
+            #    redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return redirect(url_for('auth.redirected'))
@@ -59,7 +67,7 @@ def login():
 
 @auth.route("/redirected", methods=['GET', 'POST'])
 def redirected():
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('auth.login' , messages=''))
 
 
 @auth.route("/logout")
