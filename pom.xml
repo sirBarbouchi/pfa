@@ -17,7 +17,6 @@
   </properties>
 
   <modules>
-    <module>templates</module> 
   </modules>
 
   <distributionManagement>
