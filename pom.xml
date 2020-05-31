@@ -17,9 +17,7 @@
   </properties>
 
   <modules>
-    <module>static</module>
-    <module>templates</module>
-    <module>views</module> 
+    <module>templates</module> 
   </modules>
 
   <distributionManagement>
