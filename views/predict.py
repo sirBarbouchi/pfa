@@ -31,38 +31,43 @@ def transf(l):
          
 @pred.route('/predict', methods=['GET', 'POST'])
 def predict():
-    print("*******",session['logged_in'])
-    session['predict']=True
-    if not session['logged_in'] :
+    if 'logged_in' in session:  
+        if not session['logged_in'] :
+            session['predict']=True
+            return redirect(url_for('auth.login'))
+        else:
+            form = Form()
+            form.municipality.choices = [(municipality.id_mun, municipality.municipality) for municipality in Municipality.query.all()]
+            form.municipality.default = '1'
+            if request.method == 'POST':
+                municipality = Municipality.query.filter_by(id=form.municipality.data).first()
+                city = City.query.filter_by(id=form.city.data).first()
+                area = int(form.area.data)
+                roomNumber = int(form.roomNumber.data)
+                emp = 1#emplacement.id
+                int_features = [emp, roomNumber, area]
+                final = np.array(transf(int_features)).reshape(-1, 59)
+                print("**" , final)
+
+                final[:,57:] = sc_X.transform(final[:,57:]) 
+                print("**" , final)
+
+                prediction = model.predict(final)
+
+
+                return render_template('price.html',price=round(prediction[0], 2))
+    else:
+        session['predict']=True
         return redirect(url_for('auth.login'))
-        #return redirect(url_for('auth.login'))
-    form = Form()
-    form.municipality.choices = [(municipality.id_mun, municipality.municipality) for municipality in Municipality.query.all()]
-    form.municipality.default = '1'
-    if request.method == 'POST':
-        municipality = Municipality.query.filter_by(id=form.municipality.data).first()
-        city = city.query.filter_by(id=form.city.data).first()
-        area = int(form.area.data)
-        roomNumber = int(form.roomNumber.data)
-        emp = 1#emplacement.id
-        int_features = [emp, roomNumber, area]
-        final = np.array(transf(int_features)).reshape(-1, 59)
-        print("**" , final)
 
-        final[:,57:] = sc_X.transform(final[:,57:]) 
-        print("**" , final)
-
-        prediction = model.predict(final)
-
-        return render_template('price.html',price=round(prediction[0], 2))
     return render_template('predict.html', form=form)
  
-@pred.route('/city/<get_city>')###
-def citybyregion(get_city):
+@pred.route('/city/<get_city>')
+def citybymunicipality(get_city):
     city = City.query.filter_by(id_mun=get_city).all()
     cityArray = []
     for c in city:
         cityObj = {}
-        cityObj['name'] = c.municipality
+        cityObj['name'] = c.city
         cityArray.append(cityObj)
     return jsonify({'citymunicipality' : cityArray})
