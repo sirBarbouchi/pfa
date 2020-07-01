@@ -20,6 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = b'\x1d\xcf\n\xe9\x0f*\xe2_Z\xdd\xdb\x19\xd8L\x1e\xaf\x058\x17\xbd\xa1_2\xf4'
 app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
+app.config['DEBUG'] = True
 # oAuth Setup
 oauth = OAuth(app)
 
