@@ -14,7 +14,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost/pfa'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@localhost/pfa'
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = b'\x1d\xcf\n\xe9\x0f*\xe2_Z\xdd\xdb\x19\xd8L\x1e\xaf\x058\x17\xbd\xa1_2\xf4'
