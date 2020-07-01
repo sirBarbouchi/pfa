@@ -48,6 +48,6 @@ class Municipality(db.Model):
     id_mun = db.Column(db.Integer, primary_key=True)
     municipality = db.Column(db.String(60), primary_key=True)
   
-class city(db.Model): 
+class City(db.Model): 
     city = db.Column(db.String(60), primary_key=True)
     id_mun = db.Column(db.Integer) 
