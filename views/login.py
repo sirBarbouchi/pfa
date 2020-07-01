@@ -6,20 +6,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 auth = Blueprint('auth', __name__, template_folder='templates')
 
-"""@login.route('/new', methods=['POST', 'GET'])
-def createAccount():
-    if request.method == "POST":
-        firstName = request.form.get('FirstName')
-        lastName = request.form.get('LastName')
-        email = request.form.get('Email')
-        password = request.form.get('Password')
-        username = request.form.get('Username')
-        user = Users(firstName, lastName, email, username, password)
-        db.session.add(user)
-        db.session.commit()
-    return render_template("registration.html")
-"""
-
 @auth.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -45,24 +31,16 @@ def login():
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-
         user = Users.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            #next_page = request.args['messages'] 
-            #next_page = request.args.get("next")
-            print("*************")
-            #print(next_page)
             session['logged_in'] = True
-            if session['predict']==True:
-                return redirect('/predict')
+            if "predict" in session:
+                if session['predict']==True:
+                    return redirect('/predict')
             else: 
                 return redirect(url_for('home'))
             #flash('Login successful.', 'success')
-            #if next_page=="/predict":
-            #    return redirect(next_page) 
-            #else:               
-            #    redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return redirect(url_for('auth.redirected'))
