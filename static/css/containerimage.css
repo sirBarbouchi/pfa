@@ -27,8 +27,8 @@ body, html {
 
 /* Position text in the middle of the page/image */
 .bg-text {
-  background-color: #000000; /* Fallback color */
-  background-color: #000000; /* Black w/opacity/see-through */
+  background-color: #001D38; /* Fallback color */
+  background-color: #001D38; /* Black w/opacity/see-through */
   color: white;
   font-weight: bold;
   border: 3px solid #f1f1f1;
