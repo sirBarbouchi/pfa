@@ -4,7 +4,7 @@ from wtforms import SelectField, Form
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from views.forms import Form
-from models import Region, Municipality, Emplacement
+from models import City, Municipality
 import numpy as np
 import pickle
 from sklearn.preprocessing import StandardScaler
