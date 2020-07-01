@@ -26,17 +26,14 @@
 {% endif %}
 {% endwith %}-->
             {{ form.csrf_token}}
-            <div class="form-group">
-              <label>Region:</label>
-              {{ form.region(class="form-control") }}
-            </div>
+            
             <div class="form-group">
               <label>Municipality:</label>
               {{ form.municipality(class="form-control")}}
             </div>
             <div class="form-group">
-              <label>Emplacement:</label>
-              {{ form.emplacement(class="form-control")}}
+              <label>City:</label>
+              {{ form.city(class="form-control")}}
             </div>
             <div class="form-group">
               <label>Area:</label>
@@ -68,34 +65,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
-    region_select = document.getElementById('region');
     municipality_select = document.getElementById('municipality');
-    emplacement_select = document.getElementById('emplacement');
+    city_select = document.getElementById('emplacement');
 
     region_select.onchange = function () {
-      region = region_select.value;
-      fetch('municipality/' + region).then(function (response) {
+      municipality = municipality_select.value;
+      fetch('municipality/' + municipality).then(function (response) {
         response.json().then(function (data) {
           optionHTML = '';
-          for (municipality of data.municipalityregion) {
-            optionHTML += '<option value="' + municipality.id + '">' + municipality.name + '</option>'
+          for (city of data.cityregion) {
+            optionHTML += '<option >' + city.name + '</option>'
           }
-          municipality_select.innerHTML = optionHTML;
+          city_select.innerHTML = optionHTML;
         });
       });
     }
-    municipality_select.onchange = function () {
-      emplacement = municipality_select.value;
-      fetch('emplacement/' + emplacement).then(function (response) {
-        response.json().then(function (data) {
-          optionHTML = '';
-          for (emplacement_rs of data.emplacementlist) {
-            optionHTML += '<option value="' + emplacement_rs.id + '">' + emplacement_rs.name + '</option>'
-          }
-          emplacement_select.innerHTML = optionHTML;
-        });
-      });
-    }
+    
   </script>
   {% endblock content %}
 
