@@ -64,7 +64,7 @@ body {
 }
 
 .header_section {
-  background-color: #000000;
+  background-color: #001D38;
   padding: 10px 0;
 }
 
@@ -230,7 +230,7 @@ a:focus {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #000000, #222121);
+  background: linear-gradient(180deg, #001D38, #222121);
   z-index: 3;
   -webkit-clip-path: polygon(0 0, 60% 0, 37% 100%, 0% 100%);
           clip-path: polygon(0 0, 60% 0, 37% 100%, 0% 100%);
@@ -278,8 +278,8 @@ a:focus {
 .about_section a {
   display: inline-block;
   padding: 8px 25px;
-  background-color: #000000;
-  border: 1px solid #000000;
+  background-color: #001D38;
+  border: 1px solid #001D38;
   color: #ffffff;
   border-radius: 25px;
   margin-top: 45px;
@@ -287,7 +287,7 @@ a:focus {
 
 .about_section a:hover {
   background-color: transparent;
-  color: #000000;
+  color: #001D38;
 }
 
 .about_section p {
@@ -360,7 +360,7 @@ a:focus {
 
 .service_section .box .name h6 {
   text-transform: uppercase;
-  color: #000000;
+  color: #001D38;
   font-weight: bold;
 }
 
@@ -395,15 +395,15 @@ a:focus {
 .service_section .read-btn a {
   display: inline-block;
   padding: 8px 25px;
-  background-color: #000000;
-  border: 1px solid #000000;
+  background-color: #001D38;
+  border: 1px solid #001D38;
   color: #ffffff;
   border-radius: 25px;
 }
 
 .service_section .read-btn a:hover {
   background-color: transparent;
-  color: #000000;
+  color: #001D38;
 }
 
 .portfolio_section {
@@ -637,11 +637,11 @@ a:focus {
 }
 
 .client_section .client_container .box .client-id .name h5 {
-  color: #000000;
+  color: #001D38;
 }
 
 .client_section .client_container .box .client-id .name h6 {
-  color: #000000;
+  color: #001D38;
 }
 
 .client_section .carousel-control-prev,
@@ -656,7 +656,7 @@ a:focus {
   background-repeat: no-repeat;
   background-position: center;
   opacity: 1;
-  background-color: #000000;
+  background-color: #001D38;
 }
 
 .client_section .carousel-control-prev:hover,
@@ -709,7 +709,7 @@ a:focus {
 
 .contact_section .contact_form-container button {
   border: none;
-  background-color: #000000;
+  background-color: #001D38;
   color: #fff;
   font-size: 15px;
   padding: 15px 55px;
@@ -718,7 +718,7 @@ a:focus {
 }
 
 .contact_section .contact_form-container button:hover {
-  background-color: #000000;
+  background-color: #001D38;
 }
 
 .contact_section .map-box #map {
@@ -786,7 +786,7 @@ a:focus {
 .info_section {
   text-align: center;
   font-family: "Poppins", sans-serif;
-  background-color: #000000;
+  background-color: #001D38;
   color: #ffffff;
 }
 
