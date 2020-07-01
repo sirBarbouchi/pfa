@@ -11,15 +11,15 @@ def load_user(user_id):
 
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    firstName = db.Column(db.String(200))
-    lastName = db.Column(db.String(200))
+    firstname = db.Column(db.String(200))
+    lastname = db.Column(db.String(200))
     email = db.Column(db.String(200), unique=True)
     username = db.Column(db.String(200), unique=True)
     password = db.Column(db.String(200))
 
     def __init__(self, firstName, lastName, email, username, password):
-        self.firstName = firstName
-        self.lastName = lastName
+        self.firstname = firstName
+        self.lastname = lastName
         self.email = email
         self.username = username
         self.password = password
