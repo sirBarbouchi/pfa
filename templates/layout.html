@@ -7,8 +7,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="static/images/logo1.png" rel="icon">
+  <link href="static/images/logo1.png" rel="apple-touch-icon">
 
   <title>ECHRIDAR</title>
 
@@ -37,10 +39,9 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{{ url_for('home') }}">
-            <span>
-              ECHRIDAR
-            </span>
+          
+          <a href="{{ url_for('home') }}" ><img src="static/images/logo_white.png" alt="" class="img-fluid" width="170" height="120"></a>
+          <!--<a class="navbar-brand" href="{{ url_for('home') }}">-->
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,53 +100,42 @@
   <br />
   <br />
   <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
 
-
-  <div class="contact_items">
-
-    <a href="">
-      <div class="item ">
-        <div class="img-box box-2">
-
+  
+<!--Footer section-->
+<footer>
+  <section class="info_section layout_padding">
+    <div class="container">  
+      <div>
+        <a href="{{ url_for('home') }}" ><img src="static/images/logo_white.png" alt="" class="img-fluid" width="250" height="120"></a>
         </div>
-        <div class="detail-box">
-          <p>
-            +216 50677871
-          </p>
+      <div class="info_social">
+        <div>
+          <a href="">
+            <img src="static/images/fb.png" alt="">
+          </a>
         </div>
-      </div>
-    </a>
-    <a href="">
-      <div class="item ">
-        <div class="img-box box-3">
-
+      
+        <div>
+          <a href="">
+            <img src="static/images/twitter.png" alt="">
+          </a>
         </div>
-        <div class="detail-box">
-          <p>
-            echridar1@gmail.com
-          </p>
+        <div>
+          <a href="">
+            <img src="static/images/linkedin.png" alt="">
+          </a>
         </div>
-      </div>
-    </a>
-    <a href="">
-      <div class="item ">
-        <div class="img-box box-1">
-
-        </div>
-        <div class="detail-box">
-          <p>
-            Add location
-          </p>
+        <div>
+          <a href="">
+            <img src="static/images/insta.png" alt="">
+          </a>
         </div>
       </div>
-    </a>
-
+      
+    </div>
   </section>
+</footer>
+</body>
+</html>
 
-
-  <!-- end contact section -->
