@@ -43,16 +43,11 @@ class Ads(db.Model):
         self.price = price
         self.mobile = mobile        
         self.description = description
-class Region(db.Model):  
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60))
-  
+
 class Municipality(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60))
-    region_id = db.Column(db.Integer)
+    id_mun = db.Column(db.Integer, primary_key=True)
+    municipality = db.Column(db.String(60), primary_key=True)
   
-class Emplacement(db.Model): 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60))
-    municipality_id = db.Column(db.Integer) 
+class city(db.Model): 
+    city = db.Column(db.String(60), primary_key=True)
+    id_mun = db.Column(db.Integer) 
