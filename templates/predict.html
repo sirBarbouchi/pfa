@@ -57,24 +57,25 @@
       </form>
     </div>
   </div>
+  </section>
 
 
-  <!-- end contact section -->
+  <!-- end predict section -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
     id="bootstrap-css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
     municipality_select = document.getElementById('municipality');
-    city_select = document.getElementById('emplacement');
+    city_select = document.getElementById('city');
 
-    region_select.onchange = function () {
+    municipality_select.onchange = function () {
       municipality = municipality_select.value;
-      fetch('municipality/' + municipality).then(function (response) {
+      fetch('city/' + municipality).then(function (response) {
         response.json().then(function (data) {
           optionHTML = '';
-          for (city of data.cityregion) {
-            optionHTML += '<option >' + city.name + '</option>'
+          for (city of data.citymunicipality) {
+            optionHTML += '<option value="' + city.name + '">'+ city.name + '</option>'
           }
           city_select.innerHTML = optionHTML;
         });
