@@ -37,15 +37,14 @@ def predict():
         return redirect(url_for('auth.login'))
         #return redirect(url_for('auth.login'))
     form = Form()
-    form.region.choices = [(region.id, region.name) for region in Region.query.all()]
-    form.region.default = '1'
+    form.municipality.choices = [(municipality.id_mun, municipality.municipality) for municipality in Municipality.query.all()]
+    form.municipality.default = '1'
     if request.method == 'POST':
-        emplacement = Emplacement.query.filter_by(id=form.emplacement.data).first()
-        region = Region.query.filter_by(id=form.region.data).first()
         municipality = Municipality.query.filter_by(id=form.municipality.data).first()
+        city = city.query.filter_by(id=form.city.data).first()
         area = int(form.area.data)
         roomNumber = int(form.roomNumber.data)
-        emp = emplacement.id
+        emp = 1#emplacement.id
         int_features = [emp, roomNumber, area]
         final = np.array(transf(int_features)).reshape(-1, 59)
         print("**" , final)
@@ -58,25 +57,12 @@ def predict():
         return render_template('price.html',price=round(prediction[0], 2))
     return render_template('predict.html', form=form)
  
-@pred.route('/municipality/<get_municipality>')###
-def municipalitybyregion(get_municipality):
-    municipality = Municipality.query.filter_by(region_id=get_municipality).all()
-    municipalityArray = []
-    for emplacement in municipality:
-        municipalityObj = {}
-        municipalityObj['id'] = emplacement.id
-        municipalityObj['name'] = emplacement.name
-        municipalityArray.append(municipalityObj)
-    return jsonify({'municipalityregion' : municipalityArray})
-  
-@pred.route('/emplacement/<get_emplacement>')
-def emplacement(get_emplacement):
-    municipality_data = Emplacement.query.filter_by(municipality_id=get_emplacement).all()
-    emplacementArray = []
-    for emplacement in municipality_data:
-        emplacementObj = {}
-        emplacementObj['id'] = emplacement.id
-        emplacementObj['name'] = emplacement.name
-        emplacementArray.append(emplacementObj)
-    return jsonify({'emplacementlist' : emplacementArray}) 
-
+@pred.route('/city/<get_city>')###
+def citybyregion(get_city):
+    city = City.query.filter_by(id_mun=get_city).all()
+    cityArray = []
+    for c in city:
+        cityObj = {}
+        cityObj['name'] = c.municipality
+        cityArray.append(cityObj)
+    return jsonify({'citymunicipality' : cityArray})
