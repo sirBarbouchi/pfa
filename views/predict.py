@@ -502,7 +502,7 @@ def predict():
                 prediction = model.predict(int_features)
                 
 
-                return render_template('price.html',price=round(prediction[0], 2), city=city, category=category, room=roomNumber, area=area)
+                return render_template('price.html',price=int(prediction[0]), city=city, category=category, room=roomNumber, area=area)
     else:
         session['predict']=True
         return redirect(url_for('auth.login'))
