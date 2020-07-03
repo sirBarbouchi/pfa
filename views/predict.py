@@ -480,7 +480,7 @@ def predict():
                 city = str(cit)[6:-1]
                 area = int(form.area.data)
                 roomNumber = int(form.roomNumber.data)
-                category = form.category.data
+                category = int(form.category.data)
                 print("*****cat*******", category)
                 if(category == 0):
                     city_pos = cities0.index(city)
