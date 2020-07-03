@@ -14,7 +14,7 @@ def register():
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
         #user = Users(firstName, lastName, email, username, password)
-        print("**********--------*********",form.lastname.data)
+        #print("**********--------*********",form.lastname.data)
         user = Users(firstname="khalil", lastname=form.lastname.data, email=form.email.data, username=form.username.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
