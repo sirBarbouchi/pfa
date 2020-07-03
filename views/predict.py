@@ -482,12 +482,18 @@ def predict():
                 roomNumber = int(form.roomNumber.data)
                 category = int(form.category.data)
                 if(category == 1):
-                    city_pos = cities0.index(city)
+                    if city in cities0:
+                        city_pos = cities0.index(city)
+                    else:
+                        city_pos = cities1.index(city) 
                     for e in price_m0:
                         if int(e[0]) == city_pos:
                             pr_m = e[1]
                 else:
-                    city_pos = cities1.index(city)
+                    if city in cities1:
+                        city_pos = cities1.index(city)
+                    else:
+                        city_pos = cities0.index(city) 
                     for e in price_m1:
                         if int(e[0]) == city_pos:
                             pr_m = e[1]
