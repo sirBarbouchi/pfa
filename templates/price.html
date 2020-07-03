@@ -4,9 +4,14 @@
     <div class="container">
         <div class="row">
                 <br><br><br><br><br><br>
-                <h2>
-                    Predicted price
-                </h2>
+                <div class="col-xs-1 text-center" "row">
+
+            <h1> The house features:</h1>
+            <p> City : {{city}} </p>
+            <p> Category : {% if category==0 %}home{% else %}apartment{% endif %} </p>
+            <p> Number of rooms : {{room}} </p>
+            <p> Area : {{area}} </p>
+        </div>
                 <hr>
                
             
@@ -16,14 +21,7 @@
         <br>
         <br>
         
-        <div class="col-xs-1 text-center" "row">
-
-            <h1> The house features:</h1>
-            <p> City : {{city}} </p>
-            <p> Category : {% if category==0 %}home{% else %}apartment{% endif %} </p>
-            <p> Number of rooms : {{room}} </p>
-            <p> Area : {{area}} </p>
-        </div>
+        
         <div class="bg-text" "row">
 
             <h1 style="font-size:50px">The predicted price is :</h1>
