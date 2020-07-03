@@ -481,8 +481,8 @@ def predict():
                 area = int(form.area.data)
                 roomNumber = int(form.roomNumber.data)
                 category = form.category.data
-                print("*****city*******", city)
-                if(category == "Home"):
+                print("*****cat*******", category)
+                if(category == 0):
                     city_pos = cities0.index(city)
                     for e in price_m0:
                         if int(e[0]) == city_pos:
