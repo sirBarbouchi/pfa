@@ -17,13 +17,15 @@
         <br>
         <br>
         
+        <div class="d-flex justify-content-center">
+
+            <h1> The house features:</h1>
+            <p> city : {{city}} </p>
+            <p> category : {% if category==0 %}home{% else %}apartment{% endif %} </p>
+            <p> Number of rooms : {{room}} </p>
+            <p> Area : {{area}} </p>
+        </div>
         <div class="bg-text">
-            <div> The house features:</div>
-            <div> city : {{city}} </div>
-            <div> category : {% if category==0 %}home{% else %}apartment{% endif %} </div>
-            <div> Number of rooms : {{room}} </div>
-            <div> Area : {{area}} </div>
-                
 
             <h1 style="font-size:50px">The predicted price is :</h1>
             <h1 style="font-size:50px">{{price}}DT</h1>
