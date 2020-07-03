@@ -493,11 +493,10 @@ def predict():
                             pr_m = e[1]
 
                 int_features = [[city_pos, category, roomNumber, area, pr_m]]
-                print("*****int_features*******", int_features)
                 prediction = model.predict(int_features)
                 
 
-                return render_template('price.html',price=round(prediction[0], 2))
+                return render_template('price.html',price=round(prediction[0], 2), city=city, category=category, room=roomNumber, area=area)
     else:
         session['predict']=True
         return redirect(url_for('auth.login'))
