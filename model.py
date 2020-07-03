@@ -480,12 +480,12 @@ def predict():
                 category = form.category.data
                 if(category == "Home"):
                     city_pos = cities0.index(city)
-                    for(e in price_m0):
+                    for e in price_m0:
                         if int(e[0]) == city_pos:
                             pr_m = e[1]
                 else:
                     city_pos = cities1.index(city)
-                    for(e in price_m1):
+                    for e in price_m1:
                         if int(e[0]) == city_pos:
                             pr_m = e[1]
 
