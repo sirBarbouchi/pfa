@@ -8,7 +8,7 @@ from models import City, Municipality
 import numpy as np
 import pickle
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Ridge
+from sklearn.ensemble import RandomForestRegressor
 import joblib
 
 
