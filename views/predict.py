@@ -481,7 +481,6 @@ def predict():
                 area = int(form.area.data)
                 roomNumber = int(form.roomNumber.data)
                 category = int(form.category.data)
-                print("*****cat*******", category)
                 if(category == 0):
                     city_pos = cities0.index(city)
                     for e in price_m0:
@@ -494,9 +493,9 @@ def predict():
                             pr_m = e[1]
 
                 int_features = [[city_pos, roomNumber, area, pr_m]]
-
-                prediction = model.predict(final)
-
+                print("*****int_features*******", int_features)
+                prediction = model.predict(int_features)
+                
 
                 return render_template('price.html',price=round(prediction[0], 2))
     else:
