@@ -475,8 +475,8 @@ def predict():
             form.municipality.choices = [(municipality.id_mun, municipality.municipality) for municipality in Municipality.query.all()]
             form.municipality.default = '1'
             if request.method == 'POST':
-                municipality = Municipality.query.filter_by(id=form.municipality.data).first()
-                city = City.query.filter_by(id=form.city.data).first()
+                municipality = Municipality.query.filter_by(municipality=form.municipality.data).first()
+                city = City.query.filter_by(city=form.city.data).first()
                 area = int(form.area.data)
                 roomNumber = int(form.roomNumber.data)
                 category = form.category.data
