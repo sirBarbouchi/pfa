@@ -492,7 +492,7 @@ def predict():
                         if int(e[0]) == city_pos:
                             pr_m = e[1]
 
-                int_features = [[city_pos, roomNumber, area, pr_m]]
+                int_features = [[city_pos, category, roomNumber, area, pr_m]]
                 print("*****int_features*******", int_features)
                 prediction = model.predict(int_features)
                 
