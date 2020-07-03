@@ -39,8 +39,8 @@ def login():
                 if session['predict']==True:
                     return redirect('/predict')
              
-            return redirect(url_for('app.home'))
-            #flash('Login successful.', 'success')
+            return render_template('index.html')
+#flash('Login successful.', 'success')
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return redirect(url_for('auth.redirected'))
