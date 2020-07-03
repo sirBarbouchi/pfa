@@ -56,6 +56,7 @@ class AdsForm(FlaskForm):
     submit = SubmitField('Sign Up')
 class Form(FlaskForm):
     municipality = SelectField('municipality', choices=[('1', 'Select a municipality')], validators=[DataRequired()])
+    category = SelectField('category', choices=[('0', 'Home'),('1', 'Appartement')], validators=[DataRequired()])
     city = SelectField('city', choices=[('1', 'Select an city')], validators=[DataRequired()])
     area = IntegerField('area',
                         validators=[DataRequired()])
