@@ -477,11 +477,11 @@ def predict():
             if request.method == 'POST':
                 municipality = Municipality.query.filter_by(municipality=form.municipality.data).first()
                 cit = City.query.filter_by(city=form.city.data).first()
-                city = str(cit)
+                city = str(cit)[6::-1]
                 area = int(form.area.data)
                 roomNumber = int(form.roomNumber.data)
                 category = form.category.data
-                print("*****city*******", city[1])
+                print("*****city*******", city)
                 if(category == "Home"):
                     city_pos = cities0.index(city)
                     for e in price_m0:
