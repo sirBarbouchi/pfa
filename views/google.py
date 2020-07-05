@@ -21,7 +21,7 @@ auth2 = Blueprint('auth2', __name__, template_folder='templates')
 google = oauth.register(
     name='google',
     client_id="150632549688-ov4hd0n1ltfdtjrl4mrrt97v0mmonj7k.apps.googleusercontent.com",
-    client_secret="q7iBBtPh-7cVoDKuAjiOLN00",
+    client_secret="zynpvwAoLqi0ie4sqYadeVh7",
     access_token_url='https://accounts.google.com/o/oauth2/token',
     access_token_params=None,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
